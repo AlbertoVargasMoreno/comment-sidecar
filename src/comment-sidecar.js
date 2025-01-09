@@ -66,9 +66,8 @@
             const heading = document.createElement("p");
             heading.innerText = '{{noCommentsYet}}';
             return [heading];
-        } else {
-            return comments.map(createNodeForComment);
         }
+        return comments.map(createNodeForComment);
     }
     function formatDate(creationTimestamp) {
         let creationDate = new Date(creationTimestamp * 1000);
@@ -156,11 +155,14 @@
         mainFormDiv.querySelector("button").onclick = (event) => expandForm(event.target, mainFormDiv);
         return mainFormDiv;
     }
-    function loadComments(){
+    async function loadComments(){
         const path = encodeURIComponent(location.pathname);
-        return fetch(`${BASE_PATH}?site=${SITE}&path=${path}`)
-            .then(response => response.json())
-            .then(createNodesForComments);
+        const response = await fetch(`${BASE_PATH}?site=${SITE}&path=${path}`);
+        const commentsObj = await response.json();
+        return createNodesForComments(commentsObj);
+        // return fetch(`${BASE_PATH}?site=${SITE}&path=${path}`)
+        //     .then(response => response.json())
+        //     .then(createNodesForComments);
     }
 
     function createAvatarSvg() {
@@ -179,8 +181,14 @@
 
     const refresh = () => {
         commentListNode.innerHTML = '';
+        const currentPage = 3;
         loadComments().then(commentDomNodes => {
-            commentDomNodes.forEach(node => commentListNode.appendChild(node));
+            // commentDomNodes.forEach(node => commentListNode.appendChild(node));
+            const elementsPerPage = 3;
+            const initIndex = currentPage * elementsPerPage - elementsPerPage;
+            const endIndex = currentPage * elementsPerPage;
+            const productsSelected = commentDomNodes.slice(initIndex, endIndex);
+            productsSelected.forEach(node => commentListNode.appendChild(node));
         });
     };
     refresh();
