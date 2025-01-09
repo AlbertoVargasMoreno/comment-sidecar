@@ -4,15 +4,15 @@ $translations = [
     'email' => 'Correo electrónico',
     'comment' => 'Comentario',
 
-    'emailHint' => 'El correo electrónico es opcional. Si se agrega, se utiliza para enviar notificaciones cuando hay una respuesta. Tu correo electrónico nunca será publico. Puedes cancelar el envío de notificaciones y eliminar tu dirección de correo electrónico mediante un enlace en la notificación.',
+    'emailHint' => 'El correo electrónico es opcional. Si se agrega, se utiliza para enviar notificaciones cuando responden a tu comentario. Tu correo electrónico nunca será público. Siempre podrás cancelar la recepción de notificaciones y eliminar tu dirección de correo electrónico mediante el enlace incluido en los correos de notificación.',
 
     'submit' => 'Comentar',
     'reply' => 'Responder',
     'writeComment' => 'Escribe un comentario...',
 
-    'noCommentsYet' => 'Aún no hay comentarios. ¡Se el primero!',
+    'noCommentsYet' => '¡Sé el primero en comentar!', 
     'successMessage' => 'Comentario publicado exitosamente',
-    'failMessage' => "Tu comentario no se publicó. Razón: ",
+    'failMessage' => "Comentario no publicado. Razón: ",
 
     'dateString' => 'hace {}',
     'years' => 'años',
@@ -27,5 +27,5 @@ $translations = [
     'introduction' => 'Hay una nueva respuesta a tu comentario.',
     'author' => 'Autor',
     'message' => 'Mensaje',
-    'unsubscribeDescription' => 'Para dejar de recibir notificaciones como esta, da clic al siguiente enlace:',
+    'unsubscribeDescription' => 'Para dejar de recibir estas notificaciones, da clic al siguiente enlace:',
 ];
